@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import BrandHeader from "@/components/BrandHeader";
 import SignUpForm from "@/components/SignUpForm";
 
 export default function SignUpPage() {
@@ -14,6 +15,8 @@ export default function SignUpPage() {
       </div>
 
       <div className="w-full max-w-sm py-10">
+        <BrandHeader className="mb-10" />
+
         {/* 타이틀 */}
         <div className="mb-8 text-left">
           <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
