@@ -89,6 +89,11 @@ export default function LoginPage() {
             {t("signUp")}
           </button>
         </div>
+
+        {/* 제작자 크레딧 */}
+        <p className="mt-6 text-center text-xs text-black/30 dark:text-white/30">
+          Created by Mithpasong.kr
+        </p>
       </div>
     </main>
   );
