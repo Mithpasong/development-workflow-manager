@@ -1,3 +1,4 @@
+import { randomBytes } from "crypto";
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { db } from "@/db";
@@ -5,6 +6,7 @@ import { users } from "@/db/schema";
 import { verifyPassword } from "@/lib/auth/password";
 import { signAccessToken } from "@/lib/auth/jwt";
 import { issueRefreshToken } from "@/lib/auth/refresh";
+import { setActiveSession } from "@/lib/auth/activeSession";
 import { setAuthCookies } from "@/lib/auth/cookies";
 
 // 사용자가 없을 때도 비슷한 시간이 걸리도록 비교에 쓰는 더미 해시(계정 열거 완화).
@@ -40,12 +42,17 @@ export async function POST(req: Request) {
   if (!ok)
     return NextResponse.json({ error: "INVALID_CREDENTIALS" }, { status: 401 });
 
+  // 단일 세션: 새 세션 ID를 활성으로 등록(기존 기기의 세션은 이 시점에 무효가 됨).
+  const sid = randomBytes(16).toString("hex");
+  await setActiveSession(user.id, sid);
+
   const accessToken = await signAccessToken({
     sub: user.id,
     email: user.email,
     name: user.name,
+    sid,
   });
-  const refreshToken = await issueRefreshToken(user.id);
+  const refreshToken = await issueRefreshToken(user.id, sid);
 
   const res = NextResponse.json({
     user: { id: user.id, email: user.email, name: user.name },
