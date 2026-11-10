@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-const DOT_COUNT = 36;
+const DOT_COUNT = 24;
 const DOT_RADIUS = 4;
 const SPEED = 0.25; // px/frame — 천천히
 const MAX_DIST = 320; // 이 거리 안이면 선으로 연결
