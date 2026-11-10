@@ -1,7 +1,7 @@
 {
   "Login": {
     "title": "Sign in",
-    "subtitle": "Sign in to your account to get started",
+    "subtitle": "Manage all your development work and flow in one place — easy to see and track at a glance.",
     "emailLabel": "Email",
     "emailPlaceholder": "you@example.com",
     "passwordLabel": "Password",
