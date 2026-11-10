@@ -11,6 +11,25 @@
     "noAccount": "Don't have an account?",
     "signUp": "Sign up"
   },
+  "SignUp": {
+    "title": "Sign up",
+    "subtitle": "Create an account to get started",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "confirmPasswordLabel": "Confirm password",
+    "confirmPasswordPlaceholder": "Re-enter your password",
+    "nameLabel": "Name",
+    "namePlaceholder": "Enter your name",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "agreePrivacy": "I agree to the Privacy Policy",
+    "agreeTerms": "I agree to the Terms of Service",
+    "submit": "Sign up",
+    "haveAccount": "Already have an account?",
+    "signIn": "Sign in"
+  },
   "Language": {
     "label": "Language",
     "korean": "한국어",

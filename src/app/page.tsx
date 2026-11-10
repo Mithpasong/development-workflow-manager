@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
-import Logo from "@/components/Logo";
+import BrandHeader from "@/components/BrandHeader";
 
 export default function LoginPage() {
   const t = useTranslations("Login");
@@ -15,15 +16,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         {/* 로고 / 브랜드 / 타이틀 */}
         <div className="mb-8">
-          {/* 로고 + 브랜드명 (중앙) */}
-          <div className="mb-10 flex flex-col items-center text-center">
-            <Logo className="h-24 w-auto text-foreground" />
-            <p className="mt-4 text-[3.375rem] font-semibold leading-[1.05] tracking-tight">
-              Development Workflow
-              <br />
-              Manager
-            </p>
-          </div>
+          <BrandHeader className="mb-10" />
 
           {/* 로그인 안내 (좌측 정렬) */}
           <div className="text-left">
@@ -98,12 +91,12 @@ export default function LoginPage() {
           <span className="text-black/50 dark:text-white/50">
             {t("noAccount")}
           </span>
-          <button
-            type="button"
+          <Link
+            href="/signup"
             className="font-medium text-foreground underline-offset-4 hover:underline"
           >
             {t("signUp")}
-          </button>
+          </Link>
         </div>
 
         {/* 제작자 크레딧 */}
