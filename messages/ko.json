@@ -54,7 +54,13 @@
     "menuAccount": "계정",
     "menuNotification": "알림",
     "projects": "프로젝트",
-    "newProject": "새 프로젝트"
+    "newProject": "새 프로젝트",
+    "projectNameLabel": "프로젝트 명",
+    "projectNamePlaceholder": "프로젝트 명을 입력하세요",
+    "create": "생성",
+    "cancel": "취소",
+    "errorProjectNameRequired": "프로젝트 명을 입력해 주세요.",
+    "errorProjectCreate": "프로젝트 생성에 실패했습니다. 다시 시도해 주세요."
   },
   "Language": {
     "label": "언어",

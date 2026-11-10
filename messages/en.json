@@ -54,7 +54,13 @@
     "menuAccount": "Account",
     "menuNotification": "Notification",
     "projects": "Projects",
-    "newProject": "New Project"
+    "newProject": "New Project",
+    "projectNameLabel": "Project name",
+    "projectNamePlaceholder": "Enter a project name",
+    "create": "Create",
+    "cancel": "Cancel",
+    "errorProjectNameRequired": "Please enter a project name.",
+    "errorProjectCreate": "Failed to create the project. Please try again."
   },
   "Language": {
     "label": "Language",
