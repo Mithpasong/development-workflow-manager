@@ -13,7 +13,7 @@ export default function LoginPage() {
 
       <div className="w-full max-w-sm">
         {/* 로고 / 타이틀 */}
-        <div className="mb-8 text-center">
+        <div className="mb-8 text-left">
           <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
           <p className="mt-2 text-sm text-black/50 dark:text-white/50">
             {t("subtitle")}
