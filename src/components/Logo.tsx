@@ -1,0 +1,27 @@
+type LogoProps = React.SVGProps<SVGSVGElement>;
+
+export default function Logo(props: LogoProps) {
+  return (
+    <svg
+      viewBox="0 0 210 140"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={4}
+      strokeLinecap="round"
+      role="img"
+      aria-label="Development Workflow Manager"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <path d="M35 35 H175 M35 105 H175 M35 35 V105 M105 35 V105 M175 35 V105 M35 35 L105 105 M105 35 L35 105 M105 35 L175 105 M175 35 L105 105" />
+      <g fill="currentColor" stroke="none">
+        <circle cx="35" cy="35" r="14" />
+        <circle cx="105" cy="35" r="14" />
+        <circle cx="175" cy="35" r="14" />
+        <circle cx="35" cy="105" r="14" />
+        <circle cx="105" cy="105" r="14" />
+        <circle cx="175" cy="105" r="14" />
+      </g>
+    </svg>
+  );
+}

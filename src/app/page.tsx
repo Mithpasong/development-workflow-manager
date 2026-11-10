@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import Logo from "@/components/Logo";
 
 export default function LoginPage() {
   const t = useTranslations("Login");
@@ -14,7 +15,12 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         {/* 로고 / 타이틀 */}
         <div className="mb-8 text-left">
-          <h1 className="text-2xl font-semibold tracking-tight">{t("title")}</h1>
+          <div className="flex items-center gap-3">
+            <Logo className="h-9 w-auto shrink-0 text-foreground" />
+            <h1 className="text-2xl font-semibold tracking-tight">
+              {t("title")}
+            </h1>
+          </div>
           <p className="mt-2 text-sm text-black/50 dark:text-white/50">
             {t("subtitle")}
           </p>
