@@ -16,7 +16,7 @@ export default function LoginPage() {
         {/* 로고 / 브랜드 / 타이틀 */}
         <div className="mb-8">
           {/* 로고 + 브랜드명 (중앙) */}
-          <div className="mb-6 flex flex-col items-center text-center">
+          <div className="mb-10 flex flex-col items-center text-center">
             <Logo className="h-24 w-auto text-foreground" />
             <p className="mt-4 text-[3.375rem] font-semibold leading-[1.05] tracking-tight">
               Development Workflow
