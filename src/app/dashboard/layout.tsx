@@ -18,10 +18,11 @@ export default async function DashboardLayout({
     <div className="flex flex-1 flex-col">
       {/* 상단 헤더 바 */}
       <header className="flex h-14 shrink-0 items-center justify-between border-b border-black/10 px-4 dark:border-white/10">
-        {/* 좌측: 사용자 이름 + 이메일 */}
-        <div className="flex items-center gap-2 text-sm">
+        {/* 좌측: 사용자 이름 + 이메일 + 로그아웃 */}
+        <div className="flex items-center gap-3 text-sm">
           <span className="font-medium">{user.name}</span>
           <span className="text-black/50 dark:text-white/50">{user.email}</span>
+          <LogoutButton />
         </div>
 
         {/* 우측 끝: 언어 선택 */}
@@ -32,9 +33,6 @@ export default async function DashboardLayout({
       <div className="flex min-h-0 flex-1">
         <aside className="flex w-56 shrink-0 flex-col border-r border-black/10 p-3 dark:border-white/10">
           <SidebarNav />
-          <div className="mt-auto pt-3">
-            <LogoutButton />
-          </div>
         </aside>
 
         <section className="flex-1 overflow-auto p-6">{children}</section>
