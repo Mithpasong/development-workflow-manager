@@ -2,7 +2,16 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { useTransitionRouter } from "next-view-transitions";
 import PolicyModal from "@/components/PolicyModal";
+
+const SERVER_ERROR_KEYS: Record<string, string> = {
+  EMAIL_TAKEN: "errorEmailTaken",
+  WEAK_PASSWORD: "errorWeakPassword",
+  INVALID_EMAIL: "errorInvalidEmail",
+  AGREEMENT_REQUIRED: "errorAgreementRequired",
+  NAME_REQUIRED: "errorGeneric",
+};
 
 const inputClass =
   "h-11 w-full rounded-lg border border-black/15 bg-background px-3.5 text-sm outline-none transition placeholder:text-black/30 focus:border-foreground focus:ring-2 focus:ring-foreground/15 dark:border-white/15 dark:placeholder:text-white/30";
@@ -121,12 +130,60 @@ type ModalKind = "privacy" | "terms";
 
 export default function SignUpForm() {
   const t = useTranslations("SignUp");
+  const router = useTransitionRouter();
   const [agreedPrivacy, setAgreedPrivacy] = useState(false);
   const [agreedTerms, setAgreedTerms] = useState(false);
   const [modal, setModal] = useState<ModalKind | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    const fd = new FormData(e.currentTarget);
+    const email = String(fd.get("email") ?? "");
+    const password = String(fd.get("password") ?? "");
+    const confirmPassword = String(fd.get("confirmPassword") ?? "");
+    const name = String(fd.get("name") ?? "");
+
+    if (password !== confirmPassword) {
+      setError(t("errorPasswordMismatch"));
+      return;
+    }
+    if (!agreedPrivacy || !agreedTerms) {
+      setError(t("errorAgreementRequired"));
+      return;
+    }
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          password,
+          name,
+          agreePrivacy: agreedPrivacy,
+          agreeTerms: agreedTerms,
+        }),
+      });
+      if (res.ok) {
+        router.push("/");
+        return;
+      }
+      const data = await res.json().catch(() => ({}));
+      const code = typeof data?.error === "string" ? data.error : "";
+      setError(t(SERVER_ERROR_KEYS[code] ?? "errorGeneric"));
+    } catch {
+      setError(t("errorNetwork"));
+    } finally {
+      setSubmitting(false);
+    }
+  }
 
   return (
-    <form className="flex flex-col gap-4">
+    <form className="flex flex-col gap-4" onSubmit={onSubmit}>
       {/* 이메일 */}
       <div className="flex flex-col gap-1.5">
         <label htmlFor="email" className={labelClass}>
@@ -187,10 +244,17 @@ export default function SignUpForm() {
         />
       </div>
 
+      {error && (
+        <p role="alert" className="text-sm text-red-600 dark:text-red-400">
+          {error}
+        </p>
+      )}
+
       {/* 가입 버튼 */}
       <button
         type="submit"
-        className="mt-2 h-11 rounded-lg bg-foreground text-sm font-medium text-background transition hover:opacity-90"
+        disabled={submitting}
+        className="mt-2 h-11 rounded-lg bg-foreground text-sm font-medium text-background transition hover:opacity-90 disabled:opacity-60"
       >
         {t("submit")}
       </button>

@@ -9,7 +9,9 @@
     "forgotPassword": "비밀번호 찾기",
     "submit": "로그인",
     "noAccount": "아직 계정이 없으신가요?",
-    "signUp": "회원가입"
+    "signUp": "회원가입",
+    "errorInvalidCredentials": "이메일 또는 비밀번호가 올바르지 않습니다.",
+    "errorNetwork": "네트워크 오류가 발생했습니다. 다시 시도해 주세요."
   },
   "SignUp": {
     "title": "회원가입",
@@ -33,7 +35,21 @@
     "policyBody": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.",
     "submit": "회원가입",
     "haveAccount": "이미 계정이 있으신가요?",
-    "signIn": "로그인"
+    "signIn": "로그인",
+    "errorPasswordMismatch": "비밀번호가 일치하지 않습니다.",
+    "errorAgreementRequired": "필수 약관에 동의해 주세요.",
+    "errorEmailTaken": "이미 가입된 이메일입니다.",
+    "errorWeakPassword": "비밀번호는 8자 이상이어야 합니다.",
+    "errorInvalidEmail": "올바른 이메일 형식이 아닙니다.",
+    "errorNetwork": "네트워크 오류가 발생했습니다. 다시 시도해 주세요.",
+    "errorGeneric": "문제가 발생했습니다. 다시 시도해 주세요."
+  },
+  "Dashboard": {
+    "title": "대시보드",
+    "welcome": "{name}님, 환영합니다.",
+    "name": "이름",
+    "email": "이메일",
+    "logout": "로그아웃"
   },
   "Language": {
     "label": "언어",
