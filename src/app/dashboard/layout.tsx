@@ -17,7 +17,7 @@ export default async function DashboardLayout({
   return (
     <div className="flex flex-1 flex-col">
       {/* 상단 헤더 바 */}
-      <header className="flex h-14 shrink-0 items-center justify-between border-b border-black/10 px-4 dark:border-white/10">
+      <header className="flex h-11 shrink-0 items-center justify-between border-b border-black/10 px-4 dark:border-white/10">
         {/* 좌측: 사용자 이름 + 이메일 + 로그아웃 */}
         <div className="flex items-center gap-3 text-sm">
           <span className="font-medium">{user.name}</span>

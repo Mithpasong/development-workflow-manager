@@ -23,7 +23,7 @@ export default function LogoutButton() {
       type="button"
       onClick={onLogout}
       disabled={loading}
-      className="h-8 rounded-lg border border-black/15 px-3 text-xs font-medium text-black/70 transition hover:bg-black/5 hover:text-foreground disabled:opacity-60 dark:border-white/15 dark:text-white/70 dark:hover:bg-white/10"
+      className="h-6 rounded-md border border-black/15 px-2 text-[11px] font-medium text-black/60 transition hover:bg-black/5 hover:text-foreground disabled:opacity-60 dark:border-white/15 dark:text-white/60 dark:hover:bg-white/10"
     >
       {t("logout")}
     </button>
