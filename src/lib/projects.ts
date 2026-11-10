@@ -14,3 +14,15 @@ export async function getUserProjects(
     .where(eq(projects.userId, userId))
     .orderBy(asc(projects.createdAt));
 }
+
+/** 특정 사용자의 새 프로젝트를 생성한다. */
+export async function createProject(
+  userId: string,
+  name: string,
+): Promise<ProjectListItem> {
+  const [created] = await db
+    .insert(projects)
+    .values({ userId, name })
+    .returning({ id: projects.id, name: projects.name });
+  return created;
+}
