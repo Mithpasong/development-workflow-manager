@@ -9,7 +9,9 @@
     "forgotPassword": "Forgot password?",
     "submit": "Sign in",
     "noAccount": "Don't have an account?",
-    "signUp": "Sign up"
+    "signUp": "Sign up",
+    "errorInvalidCredentials": "Incorrect email or password.",
+    "errorNetwork": "A network error occurred. Please try again."
   },
   "SignUp": {
     "title": "Sign up",
@@ -33,7 +35,21 @@
     "policyBody": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.",
     "submit": "Sign up",
     "haveAccount": "Already have an account?",
-    "signIn": "Sign in"
+    "signIn": "Sign in",
+    "errorPasswordMismatch": "Passwords do not match.",
+    "errorAgreementRequired": "Please agree to the required policies.",
+    "errorEmailTaken": "This email is already registered.",
+    "errorWeakPassword": "Password must be at least 8 characters.",
+    "errorInvalidEmail": "Please enter a valid email address.",
+    "errorNetwork": "A network error occurred. Please try again.",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+  "Dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome, {name}.",
+    "name": "Name",
+    "email": "Email",
+    "logout": "Log out"
   },
   "Language": {
     "label": "Language",
