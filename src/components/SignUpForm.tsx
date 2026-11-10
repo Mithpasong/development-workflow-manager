@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 
 const inputClass =
-  "h-11 w-full rounded-lg border border-black/15 bg-transparent px-3.5 text-sm outline-none transition placeholder:text-black/30 focus:border-foreground focus:ring-2 focus:ring-foreground/15 dark:border-white/15 dark:placeholder:text-white/30";
+  "h-11 w-full rounded-lg border border-black/15 bg-background px-3.5 text-sm outline-none transition placeholder:text-black/30 focus:border-foreground focus:ring-2 focus:ring-foreground/15 dark:border-white/15 dark:placeholder:text-white/30";
 const labelClass = "text-sm font-medium text-black/70 dark:text-white/70";
 
 function EyeIcon({ off }: { off?: boolean }) {
