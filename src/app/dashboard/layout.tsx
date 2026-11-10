@@ -1,8 +1,10 @@
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth/session";
+import { getUserProjects } from "@/lib/projects";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import LogoutButton from "@/components/LogoutButton";
 import SidebarNav from "@/components/dashboard/SidebarNav";
+import ProjectsMenu from "@/components/dashboard/ProjectsMenu";
 
 export default async function DashboardLayout({
   children,
@@ -13,6 +15,8 @@ export default async function DashboardLayout({
   if (!user) {
     redirect("/");
   }
+
+  const projects = await getUserProjects(user.sub);
 
   return (
     <div className="flex flex-1 flex-col">
@@ -33,6 +37,7 @@ export default async function DashboardLayout({
       <div className="flex min-h-0 flex-1">
         <aside className="flex w-56 shrink-0 flex-col border-r border-black/10 p-3 dark:border-white/10">
           <SidebarNav />
+          <ProjectsMenu projects={projects} />
         </aside>
 
         <section className="flex-1 overflow-auto p-6">{children}</section>

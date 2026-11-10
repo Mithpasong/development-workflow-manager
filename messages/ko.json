@@ -52,7 +52,9 @@
     "logout": "로그아웃",
     "menuDashboard": "대시보드",
     "menuAccount": "계정",
-    "menuNotification": "알림"
+    "menuNotification": "알림",
+    "projects": "프로젝트",
+    "newProject": "새 프로젝트"
   },
   "Language": {
     "label": "언어",
