@@ -26,3 +26,15 @@ body {
     -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo",
     "Malgun Gothic", sans-serif;
 }
+
+/* 클릭 가능한 요소에는 포인터 커서를 적용한다 (비활성 요소 제외). */
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[href],
+  label[for],
+  select,
+  summary {
+    cursor: pointer;
+  }
+}
