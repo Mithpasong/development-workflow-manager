@@ -6,11 +6,18 @@
     "dev": "next dev -p 4040",
     "build": "next build",
     "start": "next start -p 4040",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db:check": "node scripts/db-check.mjs",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "drizzle-orm": "^0.45.4",
     "next": "16.4.6",
     "next-intl": "^4.14.9",
+    "postgres": "^4.1.0",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
@@ -19,6 +26,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
     "tailwindcss": "4.3.3",
