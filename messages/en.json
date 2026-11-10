@@ -52,7 +52,9 @@
     "logout": "Log out",
     "menuDashboard": "Dashboard",
     "menuAccount": "Account",
-    "menuNotification": "Notification"
+    "menuNotification": "Notification",
+    "projects": "Projects",
+    "newProject": "New Project"
   },
   "Language": {
     "label": "Language",
