@@ -50,7 +50,9 @@
     "name": "이름",
     "email": "이메일",
     "logout": "로그아웃",
-    "menuDashboard": "대시보드"
+    "menuDashboard": "대시보드",
+    "menuAccount": "계정",
+    "menuNotification": "알림"
   },
   "Language": {
     "label": "언어",
