@@ -49,7 +49,8 @@
     "welcome": "{name}님, 환영합니다.",
     "name": "이름",
     "email": "이메일",
-    "logout": "로그아웃"
+    "logout": "로그아웃",
+    "menuDashboard": "대시보드"
   },
   "Language": {
     "label": "언어",
