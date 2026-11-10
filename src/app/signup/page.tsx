@@ -2,6 +2,7 @@ import { Link } from "next-view-transitions";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import BrandHeader from "@/components/BrandHeader";
+import LoginBackground from "@/components/LoginBackground";
 import SignUpForm from "@/components/SignUpForm";
 
 export default function SignUpPage() {
@@ -9,6 +10,9 @@ export default function SignUpPage() {
 
   return (
     <main className="relative flex flex-1 items-center justify-center p-6">
+      {/* 배경 파티클 애니메이션 (콘텐츠 뒤) */}
+      <LoginBackground />
+
       {/* 언어 전환 */}
       <div className="absolute right-6 top-6">
         <LanguageSwitcher />
