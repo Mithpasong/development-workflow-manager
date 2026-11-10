@@ -13,17 +13,27 @@ export default function LoginPage() {
       </div>
 
       <div className="w-full max-w-sm">
-        {/* 로고 / 타이틀 */}
-        <div className="mb-8 text-left">
-          <div className="flex items-center gap-3">
-            <Logo className="h-9 w-auto shrink-0 text-foreground" />
+        {/* 로고 / 브랜드 / 타이틀 */}
+        <div className="mb-8">
+          {/* 로고 + 브랜드명 (중앙) */}
+          <div className="mb-6 flex flex-col items-center text-center">
+            <Logo className="h-12 w-auto text-foreground" />
+            <p className="mt-4 text-lg font-semibold leading-tight tracking-tight">
+              Development Workflow
+              <br />
+              Manager
+            </p>
+          </div>
+
+          {/* 로그인 안내 (좌측 정렬) */}
+          <div className="text-left">
             <h1 className="text-2xl font-semibold tracking-tight">
               {t("title")}
             </h1>
+            <p className="mt-2 text-xs text-black/50 dark:text-white/50">
+              {t("subtitle")}
+            </p>
           </div>
-          <p className="mt-2 text-sm text-black/50 dark:text-white/50">
-            {t("subtitle")}
-          </p>
         </div>
 
         {/* 로그인 폼 */}
