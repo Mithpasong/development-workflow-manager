@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Logo from "@/components/Logo";
@@ -98,12 +99,12 @@ export default function LoginPage() {
           <span className="text-black/50 dark:text-white/50">
             {t("noAccount")}
           </span>
-          <button
-            type="button"
+          <Link
+            href="/signup"
             className="font-medium text-foreground underline-offset-4 hover:underline"
           >
             {t("signUp")}
-          </button>
+          </Link>
         </div>
 
         {/* 제작자 크레딧 */}

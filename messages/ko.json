@@ -11,6 +11,25 @@
     "noAccount": "아직 계정이 없으신가요?",
     "signUp": "회원가입"
   },
+  "SignUp": {
+    "title": "회원가입",
+    "subtitle": "계정을 만들어 시작하세요",
+    "emailLabel": "이메일",
+    "emailPlaceholder": "you@example.com",
+    "passwordLabel": "비밀번호",
+    "passwordPlaceholder": "비밀번호를 입력하세요",
+    "confirmPasswordLabel": "비밀번호 확인",
+    "confirmPasswordPlaceholder": "비밀번호를 다시 입력하세요",
+    "nameLabel": "이름",
+    "namePlaceholder": "이름을 입력하세요",
+    "showPassword": "비밀번호 표시",
+    "hidePassword": "비밀번호 숨기기",
+    "agreePrivacy": "개인정보 처리방침에 동의합니다",
+    "agreeTerms": "서비스 이용약관에 동의합니다",
+    "submit": "회원가입",
+    "haveAccount": "이미 계정이 있으신가요?",
+    "signIn": "로그인"
+  },
   "Language": {
     "label": "언어",
     "korean": "한국어",
