@@ -1,0 +1,19 @@
+{
+  "Login": {
+    "title": "Sign in",
+    "subtitle": "Sign in to your account to get started",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "••••••••",
+    "forgotPassword": "Forgot password?",
+    "submit": "Sign in",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign up"
+  },
+  "Language": {
+    "label": "Language",
+    "korean": "한국어",
+    "english": "English"
+  }
+}

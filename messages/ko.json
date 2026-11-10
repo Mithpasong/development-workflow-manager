@@ -1,0 +1,19 @@
+{
+  "Login": {
+    "title": "로그인",
+    "subtitle": "계정에 로그인하여 시작하세요",
+    "emailLabel": "이메일",
+    "emailPlaceholder": "you@example.com",
+    "passwordLabel": "비밀번호",
+    "passwordPlaceholder": "••••••••",
+    "forgotPassword": "비밀번호 찾기",
+    "submit": "로그인",
+    "noAccount": "아직 계정이 없으신가요?",
+    "signUp": "회원가입"
+  },
+  "Language": {
+    "label": "언어",
+    "korean": "한국어",
+    "english": "English"
+  }
+}
