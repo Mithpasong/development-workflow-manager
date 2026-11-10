@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import PolicyModal from "@/components/PolicyModal";
 
 const inputClass =
   "h-11 w-full rounded-lg border border-black/15 bg-background px-3.5 text-sm outline-none transition placeholder:text-black/30 focus:border-foreground focus:ring-2 focus:ring-foreground/15 dark:border-white/15 dark:placeholder:text-white/30";
@@ -76,8 +77,53 @@ function PasswordField({
   );
 }
 
+function Agreement({
+  checked,
+  messageKey,
+  onOpen,
+  onToggleOff,
+}: {
+  checked: boolean;
+  messageKey: "agreePrivacy" | "agreeTerms";
+  onOpen: () => void;
+  onToggleOff: () => void;
+}) {
+  const t = useTranslations("SignUp");
+  return (
+    <div className="flex items-center gap-2 text-sm text-black/70 dark:text-white/70">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={() => (checked ? onToggleOff() : onOpen())}
+        aria-label={
+          messageKey === "agreePrivacy" ? t("privacyTitle") : t("termsTitle")
+        }
+        className="size-4 shrink-0 cursor-pointer rounded border-black/20 accent-foreground dark:border-white/20"
+      />
+      <span>
+        {t.rich(messageKey, {
+          policy: (chunks) => (
+            <button
+              type="button"
+              onClick={onOpen}
+              className="font-medium text-foreground underline underline-offset-2 hover:opacity-80"
+            >
+              {chunks}
+            </button>
+          ),
+        })}
+      </span>
+    </div>
+  );
+}
+
+type ModalKind = "privacy" | "terms";
+
 export default function SignUpForm() {
   const t = useTranslations("SignUp");
+  const [agreedPrivacy, setAgreedPrivacy] = useState(false);
+  const [agreedTerms, setAgreedTerms] = useState(false);
+  const [modal, setModal] = useState<ModalKind | null>(null);
 
   return (
     <form className="flex flex-col gap-4">
@@ -127,30 +173,18 @@ export default function SignUpForm() {
 
       {/* 약관 동의 */}
       <div className="flex flex-col gap-2 pt-1">
-        <label
-          htmlFor="agreePrivacy"
-          className="flex items-center gap-2 text-sm text-black/70 dark:text-white/70"
-        >
-          <input
-            id="agreePrivacy"
-            name="agreePrivacy"
-            type="checkbox"
-            className="size-4 shrink-0 cursor-pointer rounded border-black/20 accent-foreground dark:border-white/20"
-          />
-          <span>{t("agreePrivacy")}</span>
-        </label>
-        <label
-          htmlFor="agreeTerms"
-          className="flex items-center gap-2 text-sm text-black/70 dark:text-white/70"
-        >
-          <input
-            id="agreeTerms"
-            name="agreeTerms"
-            type="checkbox"
-            className="size-4 shrink-0 cursor-pointer rounded border-black/20 accent-foreground dark:border-white/20"
-          />
-          <span>{t("agreeTerms")}</span>
-        </label>
+        <Agreement
+          checked={agreedPrivacy}
+          messageKey="agreePrivacy"
+          onOpen={() => setModal("privacy")}
+          onToggleOff={() => setAgreedPrivacy(false)}
+        />
+        <Agreement
+          checked={agreedTerms}
+          messageKey="agreeTerms"
+          onOpen={() => setModal("terms")}
+          onToggleOff={() => setAgreedTerms(false)}
+        />
       </div>
 
       {/* 가입 버튼 */}
@@ -160,6 +194,21 @@ export default function SignUpForm() {
       >
         {t("submit")}
       </button>
+
+      {/* 정책 모달 (portal로 body에 렌더됨) */}
+      <PolicyModal
+        open={modal !== null}
+        title={modal === "terms" ? t("termsTitle") : t("privacyTitle")}
+        body={t("policyBody")}
+        agreeLabel={t("agree")}
+        closeLabel={t("close")}
+        onAgree={() => {
+          if (modal === "privacy") setAgreedPrivacy(true);
+          else if (modal === "terms") setAgreedTerms(true);
+          setModal(null);
+        }}
+        onClose={() => setModal(null)}
+      />
     </form>
   );
 }
