@@ -50,7 +50,9 @@
     "name": "Name",
     "email": "Email",
     "logout": "Log out",
-    "menuDashboard": "Dashboard"
+    "menuDashboard": "Dashboard",
+    "menuAccount": "Account",
+    "menuNotification": "Notification"
   },
   "Language": {
     "label": "Language",
