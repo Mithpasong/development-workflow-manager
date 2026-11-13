@@ -57,7 +57,7 @@ export default function ToastProvider() {
   return (
     <ToastContainer
       style={toastVars}
-      toastClassName="text-[12px] leading-snug border border-black"
+      toastClassName="text-[12px] leading-snug border border-white/25"
       position="top-center"
       transition={Slide}
       autoClose={4000}
