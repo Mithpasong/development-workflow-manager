@@ -19,7 +19,7 @@ export default async function AccountPage() {
   }).format(account.createdAt);
 
   return (
-    <div className="max-w-xl">
+    <div className="mx-auto max-w-xl">
       <h1 className="text-3xl font-semibold tracking-tight">{t("title")}</h1>
       <p className="mt-2 text-sm text-black/50 dark:text-white/50">
         {t("subtitle")}
