@@ -53,8 +53,6 @@
     "menuDashboard": "Dashboard",
     "menuAccount": "Account",
     "menuNotification": "Notification",
-    "currentProject": "Current project",
-    "noProjectSelected": "No project selected",
     "projects": "Projects",
     "newProject": "New Project",
     "projectNameLabel": "Project name",

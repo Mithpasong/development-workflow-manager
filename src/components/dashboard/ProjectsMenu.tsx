@@ -7,6 +7,9 @@ import NewProjectModal from "@/components/dashboard/NewProjectModal";
 import { selectProjectAction } from "@/lib/projects-actions";
 import type { ProjectListItem } from "@/lib/projects";
 
+/** select 안에서 "새 프로젝트 만들기"를 나타내는 특수 값 */
+const NEW_PROJECT_VALUE = "__new_project__";
+
 export default function ProjectsMenu({
   projects,
   selectedId,
@@ -16,7 +19,6 @@ export default function ProjectsMenu({
 }) {
   const t = useTranslations("Dashboard");
   const router = useRouter();
-  const [open, setOpen] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
 
   async function selectProject(id: string) {
@@ -24,82 +26,61 @@ export default function ProjectsMenu({
     router.refresh();
   }
 
-  const newProjectButton = (
-    <button
-      type="button"
-      onClick={() => setModalOpen(true)}
-      className="flex items-center justify-center gap-1 rounded-lg border border-dashed border-black/20 px-3 py-1.5 text-sm font-medium text-black/60 transition hover:border-foreground hover:text-foreground dark:border-white/20 dark:text-white/60"
-    >
-      <span aria-hidden="true">+</span>
-      {t("newProject")}
-    </button>
-  );
+  // 프로젝트가 없으면 고를 항목이 없으므로 드롭다운 대신 New Project 버튼
+  if (projects.length === 0) {
+    return (
+      <div className="mt-1">
+        <button
+          type="button"
+          onClick={() => setModalOpen(true)}
+          className="flex w-full items-center justify-center gap-1 rounded-lg border border-dashed border-black/20 px-3 py-2 text-sm font-medium text-black/60 transition hover:border-foreground hover:text-foreground dark:border-white/20 dark:text-white/60"
+        >
+          <span aria-hidden="true">+</span>
+          {t("newProject")}
+        </button>
+
+        {modalOpen && (
+          <NewProjectModal
+            onClose={() => setModalOpen(false)}
+            onCreated={(id) => {
+              if (id) void selectProject(id);
+              else router.refresh();
+            }}
+          />
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="mt-1">
-      {projects.length === 0 ? (
-        // 프로젝트가 없으면: 드롭다운 대신 New Project 버튼
-        newProjectButton
-      ) : (
-        <>
-          {/* 드롭다운 헤더 */}
-          <button
-            type="button"
-            onClick={() => setOpen((o) => !o)}
-            aria-expanded={open}
-            className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-medium text-black/70 transition hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10"
-          >
-            <span>{t("projects")}</span>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className={`size-4 transition-transform ${open ? "rotate-180" : ""}`}
-              aria-hidden="true"
-            >
-              <path d="M6 9l6 6 6-6" />
-            </svg>
-          </button>
-
-          {open && (
-            <div className="mt-1 flex flex-col gap-1 pl-3">
-              {/* 프로젝트 목록 */}
-              {projects.map((p) => {
-                const active = p.id === selectedId;
-                return (
-                  <button
-                    key={p.id}
-                    type="button"
-                    onClick={() => selectProject(p.id)}
-                    aria-current={active ? "true" : undefined}
-                    className={`w-full truncate rounded-lg px-3 py-1.5 text-left text-sm transition ${
-                      active
-                        ? "bg-foreground text-background"
-                        : "text-black/60 hover:bg-black/5 hover:text-foreground dark:text-white/60 dark:hover:bg-white/10"
-                    }`}
-                    title={p.name}
-                  >
-                    {p.name}
-                  </button>
-                );
-              })}
-
-              {/* 더 만들기용 New Project 버튼 */}
-              {newProjectButton}
-            </div>
-          )}
-        </>
-      )}
+      <select
+        aria-label={t("projects")}
+        value={selectedId ?? ""}
+        onChange={(e) => {
+          const value = e.target.value;
+          if (value === NEW_PROJECT_VALUE) {
+            // 선택값은 그대로 두고(제어 컴포넌트) 모달만 연다
+            setModalOpen(true);
+            return;
+          }
+          void selectProject(value);
+        }}
+        className="h-9 w-full rounded-lg border border-black/15 bg-background px-2 text-sm outline-none transition focus:border-foreground focus:ring-2 focus:ring-foreground/15 dark:border-white/15"
+      >
+        {projects.map((p) => (
+          <option key={p.id} value={p.id}>
+            {p.name}
+          </option>
+        ))}
+        <option value={NEW_PROJECT_VALUE}>+ {t("newProject")}</option>
+      </select>
 
       {modalOpen && (
         <NewProjectModal
           onClose={() => setModalOpen(false)}
           onCreated={(id) => {
-            // 새로 만든 프로젝트를 선택 상태로
-            if (id) selectProject(id);
+            if (id) void selectProject(id);
             else router.refresh();
           }}
         />
