@@ -58,14 +58,15 @@ export default function DashboardSidebar({
 
   return (
     <aside
-      className={`relative flex shrink-0 flex-col border-r border-black/10 p-2 transition-[width] duration-200 dark:border-white/10 ${
-        collapsed ? "w-12 items-center" : "w-56"
+      data-collapsed={collapsed ? "true" : "false"}
+      className={`group/sidebar relative z-10 flex shrink-0 flex-col border-r border-black/10 p-2 transition-[width] duration-200 dark:border-white/10 ${
+        collapsed ? "w-14" : "w-56"
       }`}
     >
       {/*
-        펼침: 흐름에서 빼 우측 상단에 겹쳐 배치하고 높이를 메뉴 한 줄(h-9)과 맞춰
-              첫 번째 항목(Account)과 세로 중심이 일치하게 한다.
-        접힘: 흐름 안에서 가운데 정렬.
+        토글 버튼: 우측 경계선 위에 걸치도록 배치(-right-3 + size-6 → 선 중앙).
+        테두리/배경/그림자를 넣어 버튼처럼 보이게 한다.
+        세로 위치는 첫 번째 메뉴 행(Account)의 중심(26px)에 맞춘다.
       */}
       <button
         type="button"
@@ -73,20 +74,16 @@ export default function DashboardSidebar({
         aria-label={label}
         aria-expanded={!collapsed}
         title={label}
-        className={`flex h-9 shrink-0 items-center justify-center rounded-md text-black/45 transition hover:bg-black/5 hover:text-foreground dark:text-white/45 dark:hover:bg-white/10 ${
-          collapsed ? "w-full" : "absolute right-2 top-2 z-10 w-7"
-        }`}
+        className="absolute -right-3 top-3.5 z-20 flex size-6 items-center justify-center rounded-full border border-black/15 bg-background text-black/50 shadow-sm transition hover:border-black/30 hover:text-foreground dark:border-white/20 dark:text-white/50 dark:hover:border-white/40"
       >
         {collapsed ? (
-          <ChevronRightIcon className="size-4" />
+          <ChevronRightIcon className="size-3.5" />
         ) : (
-          <ChevronLeftIcon className="size-4" />
+          <ChevronLeftIcon className="size-3.5" />
         )}
       </button>
 
-      {!collapsed && (
-        <div className="flex min-h-0 flex-1 flex-col px-1">{children}</div>
-      )}
+      <div className="flex min-h-0 flex-1 flex-col">{children}</div>
     </aside>
   );
 }

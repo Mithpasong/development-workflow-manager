@@ -55,10 +55,16 @@ export default async function DashboardLayout({
         <DashboardSidebar initialCollapsed={sidebarCollapsed}>
           <SidebarNav />
 
-          {/* Notification 아래 구분선 (섹션 구분) */}
-          <hr className="my-2 border-black/10 dark:border-white/10" />
+          {/* 접힘 상태에서는 좁은 폭에 표현할 수 없어 프로젝트 섹션을 숨긴다 */}
+          <div className="group-data-[collapsed=true]/sidebar:hidden">
+            {/* Notification 아래 구분선 (섹션 구분) */}
+            <hr className="my-2 border-black/10 dark:border-white/10" />
 
-          <ProjectsMenu projects={projects} selectedId={selected?.id ?? null} />
+            <ProjectsMenu
+              projects={projects}
+              selectedId={selected?.id ?? null}
+            />
+          </div>
         </DashboardSidebar>
 
         <section className="flex-1 overflow-auto p-6">{children}</section>

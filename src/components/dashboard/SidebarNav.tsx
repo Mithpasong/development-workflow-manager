@@ -2,10 +2,13 @@
 
 import { useTranslations } from "next-intl";
 
+// 접힘(aside의 data-collapsed="true")일 때는 아이콘만 보이도록 텍스트를 숨기고 가운데 정렬한다.
 const itemClass =
-  "flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm font-medium text-black/70 transition hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10";
+  "flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-left text-sm font-medium text-black/70 transition hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10 group-data-[collapsed=true]/sidebar:justify-center";
 
 const iconClass = "size-4 shrink-0";
+
+const labelClass = "truncate group-data-[collapsed=true]/sidebar:hidden";
 
 function UserIcon({ className }: { className?: string }) {
   return (
@@ -49,13 +52,13 @@ export default function SidebarNav() {
   return (
     <nav className="flex flex-col gap-1">
       {/* UI 전용 — 기능 미구현 placeholder */}
-      <button type="button" className={itemClass}>
+      <button type="button" className={itemClass} title={t("menuAccount")}>
         <UserIcon className={iconClass} />
-        <span className="truncate">{t("menuAccount")}</span>
+        <span className={labelClass}>{t("menuAccount")}</span>
       </button>
-      <button type="button" className={itemClass}>
+      <button type="button" className={itemClass} title={t("menuNotification")}>
         <BellIcon className={iconClass} />
-        <span className="truncate">{t("menuNotification")}</span>
+        <span className={labelClass}>{t("menuNotification")}</span>
       </button>
     </nav>
   );
