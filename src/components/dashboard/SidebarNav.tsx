@@ -61,7 +61,7 @@ export default function SidebarNav() {
   const accountActive = pathname === "/dashboard/account";
 
   return (
-    <nav className="-mx-2 flex flex-col gap-1 bg-black/[0.035] px-2 py-2 dark:bg-white/[0.06]">
+    <nav className="-mx-2 -mt-2 flex flex-col gap-1 bg-black/[0.06] px-2 py-2 dark:bg-white/[0.09]">
       <span className={sectionLabelClass}>{t("generalLabel")}</span>
 
       <Link

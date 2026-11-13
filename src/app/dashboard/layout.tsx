@@ -60,7 +60,7 @@ export default async function DashboardLayout({
             Notification 아래 구분선 — aside의 p-2를 상쇄해 가로 전체를 채운다.
             접힘 상태에서도 보이도록 숨김 래퍼 바깥에 둔다.
           */}
-          <hr className="-mx-2 my-2 border-black/10 dark:border-white/10" />
+          <hr className="-mx-2 mb-2 border-black/10 dark:border-white/10" />
 
           {/* 접힘 상태에서는 좁은 폭에 표현할 수 없어 드롭다운만 숨긴다 */}
           <div className="group-data-[collapsed=true]/sidebar:hidden">
