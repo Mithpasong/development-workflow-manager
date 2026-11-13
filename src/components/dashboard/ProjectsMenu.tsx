@@ -4,17 +4,25 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import NewProjectModal from "@/components/dashboard/NewProjectModal";
+import { selectProjectAction } from "@/lib/projects-actions";
 import type { ProjectListItem } from "@/lib/projects";
 
 export default function ProjectsMenu({
   projects,
+  selectedId,
 }: {
   projects: ProjectListItem[];
+  selectedId: string | null;
 }) {
   const t = useTranslations("Dashboard");
   const router = useRouter();
   const [open, setOpen] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
+
+  async function selectProject(id: string) {
+    await selectProjectAction(id);
+    router.refresh();
+  }
 
   return (
     <div className="mt-1">
@@ -43,16 +51,25 @@ export default function ProjectsMenu({
       {open && (
         <div className="mt-1 flex flex-col gap-1 pl-3">
           {/* 프로젝트 목록 */}
-          {projects.map((p) => (
-            <button
-              key={p.id}
-              type="button"
-              className="w-full truncate rounded-lg px-3 py-1.5 text-left text-sm text-black/60 transition hover:bg-black/5 hover:text-foreground dark:text-white/60 dark:hover:bg-white/10"
-              title={p.name}
-            >
-              {p.name}
-            </button>
-          ))}
+          {projects.map((p) => {
+            const active = p.id === selectedId;
+            return (
+              <button
+                key={p.id}
+                type="button"
+                onClick={() => selectProject(p.id)}
+                aria-current={active ? "true" : undefined}
+                className={`w-full truncate rounded-lg px-3 py-1.5 text-left text-sm transition ${
+                  active
+                    ? "bg-foreground text-background"
+                    : "text-black/60 hover:bg-black/5 hover:text-foreground dark:text-white/60 dark:hover:bg-white/10"
+                }`}
+                title={p.name}
+              >
+                {p.name}
+              </button>
+            );
+          })}
 
           {/* New Project 버튼 (상시) */}
           <button
@@ -69,7 +86,11 @@ export default function ProjectsMenu({
       {modalOpen && (
         <NewProjectModal
           onClose={() => setModalOpen(false)}
-          onCreated={() => router.refresh()}
+          onCreated={(id) => {
+            // 새로 만든 프로젝트를 선택 상태로
+            if (id) selectProject(id);
+            else router.refresh();
+          }}
         />
       )}
     </div>

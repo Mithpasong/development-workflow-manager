@@ -1,6 +1,8 @@
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { getCurrentUser } from "@/lib/auth/session";
-import { getUserProjects } from "@/lib/projects";
+import { getUserProjects, SELECTED_PROJECT_COOKIE } from "@/lib/projects";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import LogoutButton from "@/components/LogoutButton";
 import SidebarNav from "@/components/dashboard/SidebarNav";
@@ -16,7 +18,14 @@ export default async function DashboardLayout({
     redirect("/");
   }
 
+  const t = await getTranslations("Dashboard");
   const projects = await getUserProjects(user.sub);
+
+  // 현재 선택된 프로젝트: 쿠키의 id가 목록에 있으면 그것, 없으면 첫 프로젝트(있을 때).
+  const store = await cookies();
+  const cookieSelected = store.get(SELECTED_PROJECT_COOKIE)?.value;
+  const selected =
+    projects.find((p) => p.id === cookieSelected) ?? projects[0] ?? null;
 
   return (
     <div className="flex flex-1 flex-col">
@@ -36,8 +45,21 @@ export default async function DashboardLayout({
       {/* 본문: 좌측 사이드바 + 우측 컨텐츠 */}
       <div className="flex min-h-0 flex-1">
         <aside className="flex w-56 shrink-0 flex-col border-r border-black/10 p-3 dark:border-white/10">
+          {/* 현재 선택된 프로젝트명 (항상 표시) */}
+          <div className="mb-3 rounded-lg bg-black/5 px-3 py-2 dark:bg-white/10">
+            <p className="text-[11px] font-medium uppercase tracking-wide text-black/40 dark:text-white/40">
+              {t("currentProject")}
+            </p>
+            <p
+              className="mt-0.5 truncate text-sm font-semibold"
+              title={selected?.name ?? undefined}
+            >
+              {selected ? selected.name : t("noProjectSelected")}
+            </p>
+          </div>
+
           <SidebarNav />
-          <ProjectsMenu projects={projects} />
+          <ProjectsMenu projects={projects} selectedId={selected?.id ?? null} />
         </aside>
 
         <section className="flex-1 overflow-auto p-6">{children}</section>
