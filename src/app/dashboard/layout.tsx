@@ -57,8 +57,8 @@ export default async function DashboardLayout({
 
           {/* 접힘 상태에서는 좁은 폭에 표현할 수 없어 프로젝트 섹션을 숨긴다 */}
           <div className="group-data-[collapsed=true]/sidebar:hidden">
-            {/* Notification 아래 구분선 (섹션 구분) */}
-            <hr className="my-2 border-black/10 dark:border-white/10" />
+            {/* Notification 아래 구분선 — aside의 p-2를 상쇄해 가로 전체를 채운다 */}
+            <hr className="-mx-2 my-2 border-black/10 dark:border-white/10" />
 
             <ProjectsMenu
               projects={projects}
