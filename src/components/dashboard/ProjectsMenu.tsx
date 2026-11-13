@@ -104,9 +104,16 @@ export default function ProjectsMenu({
   );
 
   // 프로젝트가 없으면 고를 항목이 없으므로 드롭다운 대신 New Project 버튼
+  const label = (
+    <span className="mb-1 block px-0.5 text-[11px] font-medium uppercase tracking-wide text-black/40 dark:text-white/40">
+      {t("projectLabel")}
+    </span>
+  );
+
   if (projects.length === 0) {
     return (
       <div className="mt-1">
+        {label}
         <button
           type="button"
           onClick={() => setModalOpen(true)}
@@ -124,6 +131,8 @@ export default function ProjectsMenu({
 
   return (
     <div className="relative mt-1" ref={containerRef}>
+      {label}
+
       {/* 트리거 */}
       <button
         type="button"
