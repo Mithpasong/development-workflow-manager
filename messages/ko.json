@@ -65,7 +65,8 @@
     "collapseSidebar": "메뉴 접기",
     "expandSidebar": "메뉴 펼치기",
     "errorProjectNameTaken": "이미 사용중인 프로젝트 명입니다.",
-    "projectCreatedToast": "{name} 프로젝트가 생성되었습니다"
+    "projectCreatedToast": "{name} 프로젝트가 생성되었습니다",
+    "generalLabel": "일반"
   },
   "Language": {
     "label": "언어",

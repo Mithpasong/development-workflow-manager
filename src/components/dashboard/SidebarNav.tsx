@@ -10,6 +10,10 @@ const iconClass = "size-4 shrink-0";
 
 const labelClass = "truncate group-data-[collapsed=true]/sidebar:hidden";
 
+// 섹션 소제목(GENERAL) — PROJECT 레이블과 동일한 스타일, 접힘 시 숨김
+const sectionLabelClass =
+  "mb-1 block px-0.5 text-[10px] font-medium uppercase tracking-wide text-black/40 dark:text-white/40 group-data-[collapsed=true]/sidebar:hidden";
+
 function UserIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -51,6 +55,8 @@ export default function SidebarNav() {
 
   return (
     <nav className="flex flex-col gap-1">
+      <span className={sectionLabelClass}>{t("generalLabel")}</span>
+
       {/* UI 전용 — 기능 미구현 placeholder */}
       <button type="button" className={itemClass} title={t("menuAccount")}>
         <UserIcon className={iconClass} />

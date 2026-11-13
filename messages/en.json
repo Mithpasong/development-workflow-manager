@@ -65,7 +65,8 @@
     "collapseSidebar": "Collapse sidebar",
     "expandSidebar": "Expand sidebar",
     "errorProjectNameTaken": "That project name is already taken.",
-    "projectCreatedToast": "Project {name} has been created"
+    "projectCreatedToast": "Project {name} has been created",
+    "generalLabel": "General"
   },
   "Language": {
     "label": "Language",
