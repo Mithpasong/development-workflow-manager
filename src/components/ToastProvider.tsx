@@ -19,12 +19,17 @@ const toastVars = {
   "--toastify-text-color-dark": "#ffffff", // 흰 글씨
   "--toastify-color-progress-dark": "#ffffff", // 흰 프로그레스 바
   "--toastify-toast-shadow": "0 10px 24px rgb(0 0 0 / 0.25)",
+  // 크기 축소 (기본: 320px / 64px / 14px)
+  "--toastify-toast-width": "17rem",
+  "--toastify-toast-min-height": "2.25rem",
+  "--toastify-toast-padding": "0.625rem",
 } as React.CSSProperties;
 
 export default function ToastProvider() {
   return (
     <ToastContainer
       style={toastVars}
+      toastClassName="text-[13px] leading-snug"
       position="top-center"
       transition={Slide}
       autoClose={4000}
