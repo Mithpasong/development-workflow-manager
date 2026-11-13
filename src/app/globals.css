@@ -54,24 +54,7 @@ body {
   }
 }
 
-/* 토스트: 위에서 아래로 내려오는 등장 애니메이션 */
-@keyframes toast-in {
-  from {
-    opacity: 0;
-    transform: translateY(-0.75rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-toast-in {
-  animation: toast-in 0.25s ease-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-toast-in {
-    animation: none;
-  }
-}
+/*
+ * 토스트(react-toastify) 색상/위치는 ToastProvider에서 컨테이너에 인라인 CSS 변수로 지정한다.
+ * (라이브러리 CSS와 이 파일이 별도 청크로 로드되어 순서에 따라 덮어쓰기가 실패할 수 있기 때문)
+ */
