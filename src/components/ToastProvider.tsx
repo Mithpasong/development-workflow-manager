@@ -14,7 +14,7 @@ function ToastCloseButton({ closeToast, ariaLabel }: CloseButtonProps) {
       type="button"
       onClick={closeToast}
       aria-label={ariaLabel ?? "close"}
-      className="ml-2 flex shrink-0 self-center rounded p-0.5 text-white/60 transition hover:text-white"
+      className="ml-auto flex shrink-0 self-center rounded pl-2 text-white/60 transition hover:text-white"
     >
       <svg
         viewBox="0 0 24 24"
@@ -62,7 +62,7 @@ export default function ToastProvider() {
       transition={Slide}
       autoClose={4000}
       closeButton={ToastCloseButton}
-      hideProgressBar={false}
+      hideProgressBar
       pauseOnHover
       pauseOnFocusLoss={false}
       draggable={false}
