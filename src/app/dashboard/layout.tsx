@@ -63,6 +63,10 @@ export default async function DashboardLayout({
           </div>
 
           <SidebarNav />
+
+          {/* Notification 아래 구분선 (섹션 구분) */}
+          <hr className="my-2 border-black/10 dark:border-white/10" />
+
           <ProjectsMenu projects={projects} selectedId={selected?.id ?? null} />
         </aside>
 
