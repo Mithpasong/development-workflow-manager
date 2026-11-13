@@ -54,27 +54,43 @@ export default function ProjectsMenu({
 
   return (
     <div className="mt-1">
-      <select
-        aria-label={t("projects")}
-        value={selectedId ?? ""}
-        onChange={(e) => {
-          const value = e.target.value;
-          if (value === NEW_PROJECT_VALUE) {
-            // 선택값은 그대로 두고(제어 컴포넌트) 모달만 연다
-            setModalOpen(true);
-            return;
-          }
-          void selectProject(value);
-        }}
-        className="h-9 w-full rounded-lg border border-black/15 bg-background px-2 text-sm outline-none transition focus:border-foreground focus:ring-2 focus:ring-foreground/15 dark:border-white/15"
-      >
-        {projects.map((p) => (
-          <option key={p.id} value={p.id}>
-            {p.name}
-          </option>
-        ))}
-        <option value={NEW_PROJECT_VALUE}>+ {t("newProject")}</option>
-      </select>
+      {/* 기본 화살표를 숨기고 커스텀 chevron을 배치해 우측 여백을 확보 */}
+      <div className="relative">
+        <select
+          aria-label={t("projects")}
+          value={selectedId ?? ""}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (value === NEW_PROJECT_VALUE) {
+              // 선택값은 그대로 두고(제어 컴포넌트) 모달만 연다
+              setModalOpen(true);
+              return;
+            }
+            void selectProject(value);
+          }}
+          className="h-9 w-full appearance-none rounded-lg border border-black/15 bg-background pl-2 pr-9 text-sm outline-none transition focus:border-foreground focus:ring-2 focus:ring-foreground/15 dark:border-white/15"
+        >
+          {projects.map((p) => (
+            <option key={p.id} value={p.id}>
+              {p.name}
+            </option>
+          ))}
+          <option value={NEW_PROJECT_VALUE}>+ {t("newProject")}</option>
+        </select>
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-black/50 dark:text-white/50"
+          aria-hidden="true"
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </div>
 
       {modalOpen && (
         <NewProjectModal
