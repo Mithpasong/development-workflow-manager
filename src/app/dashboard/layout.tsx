@@ -10,6 +10,7 @@ import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import SidebarNav from "@/components/dashboard/SidebarNav";
 import ProjectsMenu from "@/components/dashboard/ProjectsMenu";
 import ProjectNav from "@/components/dashboard/ProjectNav";
+import StepNav from "@/components/dashboard/StepNav";
 
 export default async function DashboardLayout({
   children,
@@ -72,6 +73,9 @@ export default async function DashboardLayout({
 
           {/* 프로젝트 메뉴 (접힘 시에는 아이콘만) */}
           <ProjectNav />
+
+          {/* STEP 섹션 */}
+          <StepNav />
         </DashboardSidebar>
 
         <section className="flex-1 overflow-auto p-6">{children}</section>

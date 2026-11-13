@@ -69,7 +69,10 @@
     "generalLabel": "일반",
     "menuOverview": "개요",
     "menuSettings": "설정",
-    "menuCollaborators": "협업자"
+    "menuCollaborators": "협업자",
+    "stepLabel": "단계",
+    "menuBackground": "배경",
+    "menuProposal": "제안서"
   },
   "Language": {
     "label": "언어",
