@@ -72,5 +72,32 @@
     "label": "Language",
     "korean": "한국어",
     "english": "English"
+  },
+  "Account": {
+    "title": "Account",
+    "subtitle": "View and update the details of your signed-in account.",
+    "profileTitle": "Account details",
+    "joinedAt": "Joined {date}",
+    "emailLabel": "Email",
+    "emailHelp": "Email cannot be changed.",
+    "nameLabel": "Name",
+    "save": "Save",
+    "passwordTitle": "Change password",
+    "passwordHelp": "Enter your current password to change it.",
+    "currentPasswordLabel": "Current password",
+    "newPasswordLabel": "New password",
+    "confirmNewPasswordLabel": "Confirm new password",
+    "changePassword": "Change password",
+    "profileUpdated": "Account details saved",
+    "passwordChanged": "Password changed",
+    "errorNameRequired": "Please enter a name.",
+    "errorNameTooLong": "Name must be 100 characters or fewer.",
+    "errorAllFieldsRequired": "Please fill in all fields.",
+    "errorPasswordMismatch": "New passwords do not match.",
+    "errorWeakPassword": "Password must be at least 8 characters.",
+    "errorSamePassword": "Choose a password different from your current one.",
+    "errorCurrentPasswordInvalid": "Current password is incorrect.",
+    "errorNetwork": "A network error occurred. Please try again.",
+    "errorGeneric": "Something went wrong. Please try again."
   }
 }

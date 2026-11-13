@@ -29,6 +29,14 @@ export function setAuthCookies(
   });
 }
 
+/** 액세스 토큰만 갱신한다(예: 프로필 변경 후 토큰 내 정보 동기화). */
+export function setAccessCookie(res: NextResponse, accessToken: string): void {
+  res.cookies.set(ACCESS_COOKIE, accessToken, {
+    ...baseOptions,
+    maxAge: ACCESS_TOKEN_MAX_AGE,
+  });
+}
+
 export function clearAuthCookies(res: NextResponse): void {
   res.cookies.set(ACCESS_COOKIE, "", { ...baseOptions, maxAge: 0 });
   res.cookies.set(REFRESH_COOKIE, "", { ...baseOptions, maxAge: 0 });
