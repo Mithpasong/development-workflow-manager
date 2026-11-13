@@ -72,6 +72,9 @@ export default async function DashboardLayout({
 
           {/* 프로젝트 메뉴 (접힘 시에는 아이콘만) */}
           <ProjectNav />
+
+          {/* Collaborators 아래 구분선 */}
+          <hr className="-mx-2 my-2 border-black/10 dark:border-white/10" />
         </DashboardSidebar>
 
         <section className="flex-1 overflow-auto p-6">{children}</section>
