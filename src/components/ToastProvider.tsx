@@ -1,7 +1,35 @@
 "use client";
 
-import { ToastContainer, Slide } from "react-toastify";
+import { ToastContainer, Slide, type CloseButtonProps } from "react-toastify";
 import "react-toastify/ReactToastify.css";
+
+/**
+ * 커스텀 닫기 버튼.
+ * 기본 버튼은 `position:absolute; top:6px`이라 상단에 붙는다.
+ * 일반 flex 자식으로 두면 `.Toastify__toast`의 align-items:center 덕분에 세로 가운데 정렬된다.
+ */
+function ToastCloseButton({ closeToast, ariaLabel }: CloseButtonProps) {
+  return (
+    <button
+      type="button"
+      onClick={closeToast}
+      aria-label={ariaLabel ?? "close"}
+      className="ml-2 flex shrink-0 self-center rounded p-0.5 text-white/60 transition hover:text-white"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2.5}
+        strokeLinecap="round"
+        className="size-3"
+        aria-hidden="true"
+      >
+        <path d="M6 6l12 12M18 6L6 18" />
+      </svg>
+    </button>
+  );
+}
 
 /**
  * 앱 전역 토스트 컨테이너.
@@ -29,11 +57,11 @@ export default function ToastProvider() {
   return (
     <ToastContainer
       style={toastVars}
-      toastClassName="text-[13px] leading-snug"
+      toastClassName="text-[12px] leading-snug border border-black"
       position="top-center"
       transition={Slide}
       autoClose={4000}
-      closeButton
+      closeButton={ToastCloseButton}
       hideProgressBar={false}
       pauseOnHover
       pauseOnFocusLoss={false}
