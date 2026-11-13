@@ -69,7 +69,10 @@
     "generalLabel": "General",
     "menuOverview": "Overview",
     "menuSettings": "Settings",
-    "menuCollaborators": "Collaborators"
+    "menuCollaborators": "Collaborators",
+    "stepLabel": "Step",
+    "menuBackground": "Background",
+    "menuProposal": "Proposal"
   },
   "Language": {
     "label": "Language",
