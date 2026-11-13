@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import NewProjectModal from "@/components/dashboard/NewProjectModal";
+import Toast from "@/components/Toast";
 import { selectProjectAction } from "@/lib/projects-actions";
 import type { ProjectListItem } from "@/lib/projects";
 
@@ -68,6 +69,7 @@ export default function ProjectsMenu({
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // 바깥 클릭 / Esc 로 닫기
@@ -93,14 +95,29 @@ export default function ProjectsMenu({
     router.refresh();
   }
 
-  const newProjectModal = modalOpen && (
-    <NewProjectModal
-      onClose={() => setModalOpen(false)}
-      onCreated={(id) => {
-        if (id) void selectProject(id);
-        else router.refresh();
-      }}
-    />
+  const overlays = (
+    <>
+      {modalOpen && (
+        <NewProjectModal
+          onClose={() => setModalOpen(false)}
+          onCreated={(project) => {
+            if (project) {
+              setToastMessage(t("projectCreatedToast", { name: project.name }));
+              void selectProject(project.id);
+            } else {
+              router.refresh();
+            }
+          }}
+        />
+      )}
+
+      {toastMessage && (
+        <Toast
+          message={toastMessage}
+          onClose={() => setToastMessage(null)}
+        />
+      )}
+    </>
   );
 
   // 프로젝트가 없으면 고를 항목이 없으므로 드롭다운 대신 New Project 버튼
@@ -122,7 +139,7 @@ export default function ProjectsMenu({
           <PlusIcon className="size-4" />
           {t("newProject")}
         </button>
-        {newProjectModal}
+        {overlays}
       </div>
     );
   }
@@ -197,7 +214,7 @@ export default function ProjectsMenu({
         </div>
       )}
 
-      {newProjectModal}
+      {overlays}
     </div>
   );
 }

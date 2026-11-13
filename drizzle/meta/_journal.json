@@ -22,6 +22,13 @@
       "when": 1794286189501,
       "tag": "0002_purple_human_torch",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794549645759,
+      "tag": "0003_complex_valkyrie",
+      "breakpoints": true
     }
   ]
 }
