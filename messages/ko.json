@@ -72,5 +72,32 @@
     "label": "언어",
     "korean": "한국어",
     "english": "English"
+  },
+  "Account": {
+    "title": "계정",
+    "subtitle": "로그인한 계정의 정보를 확인하고 수정할 수 있습니다.",
+    "profileTitle": "계정 정보",
+    "joinedAt": "가입일 {date}",
+    "emailLabel": "이메일",
+    "emailHelp": "이메일은 변경할 수 없습니다.",
+    "nameLabel": "이름",
+    "save": "저장",
+    "passwordTitle": "비밀번호 변경",
+    "passwordHelp": "현재 비밀번호를 입력해야 변경할 수 있습니다.",
+    "currentPasswordLabel": "현재 비밀번호",
+    "newPasswordLabel": "새 비밀번호",
+    "confirmNewPasswordLabel": "새 비밀번호 확인",
+    "changePassword": "비밀번호 변경",
+    "profileUpdated": "계정 정보가 저장되었습니다",
+    "passwordChanged": "비밀번호가 변경되었습니다",
+    "errorNameRequired": "이름을 입력해 주세요.",
+    "errorNameTooLong": "이름은 100자 이하로 입력해 주세요.",
+    "errorAllFieldsRequired": "모든 항목을 입력해 주세요.",
+    "errorPasswordMismatch": "새 비밀번호가 일치하지 않습니다.",
+    "errorWeakPassword": "비밀번호는 8자 이상이어야 합니다.",
+    "errorSamePassword": "현재 비밀번호와 다른 비밀번호를 입력해 주세요.",
+    "errorCurrentPasswordInvalid": "현재 비밀번호가 올바르지 않습니다.",
+    "errorNetwork": "네트워크 오류가 발생했습니다. 다시 시도해 주세요.",
+    "errorGeneric": "문제가 발생했습니다. 다시 시도해 주세요."
   }
 }
