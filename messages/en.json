@@ -66,7 +66,10 @@
     "expandSidebar": "Expand sidebar",
     "errorProjectNameTaken": "That project name is already taken.",
     "projectCreatedToast": "Project {name} has been created",
-    "generalLabel": "General"
+    "generalLabel": "General",
+    "menuOverview": "Overview",
+    "menuSettings": "Settings",
+    "menuCollaborators": "Collaborators"
   },
   "Language": {
     "label": "Language",
