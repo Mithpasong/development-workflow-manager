@@ -13,7 +13,7 @@ export default function NewProjectModal({
   onCreated,
 }: {
   onClose: () => void;
-  onCreated: () => void;
+  onCreated: (projectId: string | null) => void;
 }) {
   const t = useTranslations("Dashboard");
   const [name, setName] = useState("");
@@ -49,7 +49,10 @@ export default function NewProjectModal({
         body: JSON.stringify({ name: trimmed }),
       });
       if (res.ok) {
-        onCreated();
+        const data = (await res.json().catch(() => null)) as {
+          project?: { id?: string };
+        } | null;
+        onCreated(data?.project?.id ?? null);
         onClose();
         return;
       }

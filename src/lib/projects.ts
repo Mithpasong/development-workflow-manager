@@ -4,6 +4,9 @@ import { projects } from "@/db/schema";
 
 export type ProjectListItem = { id: string; name: string };
 
+/** 현재 선택된 프로젝트 id를 담는 쿠키 이름. */
+export const SELECTED_PROJECT_COOKIE = "selected_project";
+
 /** 특정 사용자의 프로젝트 목록을 생성 순으로 조회한다. */
 export async function getUserProjects(
   userId: string,
