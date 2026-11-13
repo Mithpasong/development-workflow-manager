@@ -138,28 +138,29 @@ export default function ProjectsMenu({
     <div className="relative mt-1" ref={containerRef}>
       {label}
 
-      {/* 트리거 */}
-      <button
-        type="button"
-        onClick={() => setOpen((o) => !o)}
-        aria-haspopup="listbox"
-        aria-expanded={open}
-        aria-label={t("projects")}
-        className="flex h-9 w-full items-center justify-between gap-2 rounded-lg border border-black/15 bg-background px-3 text-sm transition hover:bg-black/[0.03] focus:outline-none focus:ring-2 focus:ring-foreground/15 dark:border-white/15 dark:hover:bg-white/5"
-      >
-        <span className="truncate font-medium" title={selected.name}>
-          {selected.name}
-        </span>
-        <ChevronIcon
-          className={`size-4 shrink-0 text-black/40 transition-transform dark:text-white/40 ${
-            open ? "rotate-180" : ""
-          }`}
-        />
-      </button>
+      {/* 트리거 (패널을 버튼 기준으로 정렬하기 위한 relative 래퍼) */}
+      <div className="relative">
+        <button
+          type="button"
+          onClick={() => setOpen((o) => !o)}
+          aria-haspopup="listbox"
+          aria-expanded={open}
+          aria-label={t("projects")}
+          className="flex h-9 w-full items-center justify-between gap-2 rounded-lg border border-black/15 bg-background px-3 text-sm transition hover:bg-black/[0.03] focus:outline-none focus:ring-2 focus:ring-foreground/15 dark:border-white/15 dark:hover:bg-white/5"
+        >
+          <span className="truncate font-medium" title={selected.name}>
+            {selected.name}
+          </span>
+          <ChevronIcon
+            className={`size-4 shrink-0 text-black/40 transition-transform dark:text-white/40 ${
+              open ? "rotate-180" : ""
+            }`}
+          />
+        </button>
 
-      {/* 펼침 패널 */}
-      {open && (
-        <div className="absolute inset-x-0 top-full z-20 mt-1.5 overflow-hidden rounded-xl border border-black/10 bg-background py-1 shadow-lg shadow-black/5 dark:border-white/15 dark:shadow-black/40">
+        {/* 펼침 패널 — 아래가 아니라 트리거 오른쪽에서 열린다 */}
+        {open && (
+          <div className="absolute left-full top-0 z-30 ml-2 w-56 overflow-hidden rounded-xl border border-black/10 bg-background py-1 shadow-lg shadow-black/5 dark:border-white/15 dark:shadow-black/40">
           <ul role="listbox" className="max-h-60 overflow-auto">
             {projects.map((p) => {
               const active = p.id === selected.id;
@@ -199,8 +200,9 @@ export default function ProjectsMenu({
             <PlusIcon className="size-4 shrink-0" />
             {t("newProject")}
           </button>
-        </div>
-      )}
+          </div>
+        )}
+      </div>
 
       {overlays}
     </div>
