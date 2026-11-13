@@ -60,7 +60,9 @@
     "create": "Create",
     "cancel": "Cancel",
     "errorProjectNameRequired": "Please enter a project name.",
-    "errorProjectCreate": "Failed to create the project. Please try again."
+    "errorProjectCreate": "Failed to create the project. Please try again.",
+    "collapseSidebar": "Collapse sidebar",
+    "expandSidebar": "Expand sidebar"
   },
   "Language": {
     "label": "Language",
