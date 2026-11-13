@@ -102,5 +102,21 @@
     "errorCurrentPasswordInvalid": "Current password is incorrect.",
     "errorNetwork": "A network error occurred. Please try again.",
     "errorGeneric": "Something went wrong. Please try again."
+  },
+  "Documents": {
+    "background": "Background",
+    "documents": "Documents",
+    "newDocument": "New document",
+    "untitled": "Untitled document",
+    "documentTitle": "Document title",
+    "save": "Save",
+    "saved": "Saved",
+    "created": "Document created",
+    "emptyState": "Select a document on the left, or create a new one.",
+    "noProject": "Create a project first.",
+    "errorTitleRequired": "Please enter a document title.",
+    "errorSave": "Could not save. Please try again.",
+    "errorCreate": "Could not create the document.",
+    "errorNetwork": "A network error occurred."
   }
 }

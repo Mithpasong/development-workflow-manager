@@ -2,6 +2,7 @@ import {
   pgTable,
   uuid,
   varchar,
+  text,
   timestamp,
 } from "drizzle-orm/pg-core";
 
@@ -46,3 +47,28 @@ export const projects = pgTable("projects", {
 
 export type Project = typeof projects.$inferSelect;
 export type NewProject = typeof projects.$inferInsert;
+
+/**
+ * 문서 테이블. 프로젝트의 각 단계(step)에 속한 마크다운 문서를 보관한다.
+ * 프로젝트가 삭제되면 문서도 함께 삭제된다(cascade).
+ */
+export const documents = pgTable("documents", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  projectId: uuid("project_id")
+    .notNull()
+    .references(() => projects.id, { onDelete: "cascade" }),
+  // 어떤 단계의 문서인지 (예: "background", "proposal")
+  step: varchar("step", { length: 50 }).notNull(),
+  title: varchar("title", { length: 200 }).notNull(),
+  // 마크다운 본문
+  content: text("content").notNull().default(""),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .notNull()
+    .defaultNow(),
+});
+
+export type Document = typeof documents.$inferSelect;
+export type NewDocument = typeof documents.$inferInsert;
