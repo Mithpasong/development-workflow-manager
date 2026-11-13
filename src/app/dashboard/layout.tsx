@@ -5,6 +5,7 @@ import { getCurrentUser } from "@/lib/auth/session";
 import { getUserProjects, SELECTED_PROJECT_COOKIE } from "@/lib/projects";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import LogoutButton from "@/components/LogoutButton";
+import Logo from "@/components/Logo";
 import SidebarNav from "@/components/dashboard/SidebarNav";
 import ProjectsMenu from "@/components/dashboard/ProjectsMenu";
 
@@ -30,13 +31,16 @@ export default async function DashboardLayout({
   return (
     <div className="flex flex-1 flex-col">
       {/* 상단 헤더 바 */}
-      <header className="flex h-11 shrink-0 items-center justify-between border-b border-black/10 px-4 dark:border-white/10">
+      <header className="relative flex h-11 shrink-0 items-center justify-between border-b border-black/10 px-4 dark:border-white/10">
         {/* 좌측: 사용자 이름 + 이메일 + 로그아웃 */}
         <div className="flex items-center gap-3 text-sm">
           <span className="font-medium">{user.name}</span>
           <span className="text-black/50 dark:text-white/50">{user.email}</span>
           <LogoutButton />
         </div>
+
+        {/* 정중앙: 로고 */}
+        <Logo className="pointer-events-none absolute left-1/2 top-1/2 h-6 w-auto -translate-x-1/2 -translate-y-1/2 text-foreground" />
 
         {/* 우측 끝: 언어 선택 */}
         <LanguageSwitcher />
