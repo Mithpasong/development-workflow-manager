@@ -68,7 +68,7 @@ export default function ProjectsMenu({
             }
             void selectProject(value);
           }}
-          className="h-9 w-full appearance-none rounded-lg border border-black/15 bg-background pl-2 pr-9 text-sm outline-none transition focus:border-foreground focus:ring-2 focus:ring-foreground/15 dark:border-white/15"
+          className="h-9 w-full appearance-none rounded-lg border border-black/15 bg-background pl-2 pr-10 text-sm outline-none transition focus:border-foreground focus:ring-2 focus:ring-foreground/15 dark:border-white/15"
         >
           {projects.map((p) => (
             <option key={p.id} value={p.id}>
@@ -85,7 +85,7 @@ export default function ProjectsMenu({
           strokeWidth={2}
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-black/50 dark:text-white/50"
+          className="pointer-events-none absolute right-4 top-1/2 size-4 -translate-y-1/2 text-black/50 dark:text-white/50"
           aria-hidden="true"
         >
           <path d="M6 9l6 6 6-6" />
