@@ -34,7 +34,8 @@ export const projects = pgTable("projects", {
   userId: uuid("user_id")
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
-  name: varchar("name", { length: 100 }).notNull(),
+  // 프로젝트 이름은 전역(모든 사용자 통틀어) 유일하다.
+  name: varchar("name", { length: 100 }).notNull().unique(),
   createdAt: timestamp("created_at", { withTimezone: true })
     .notNull()
     .defaultNow(),

@@ -13,7 +13,7 @@ export default function NewProjectModal({
   onCreated,
 }: {
   onClose: () => void;
-  onCreated: (projectId: string | null) => void;
+  onCreated: (project: { id: string; name: string } | null) => void;
 }) {
   const t = useTranslations("Dashboard");
   const [name, setName] = useState("");
@@ -50,10 +50,19 @@ export default function NewProjectModal({
       });
       if (res.ok) {
         const data = (await res.json().catch(() => null)) as {
-          project?: { id?: string };
+          project?: { id?: string; name?: string };
         } | null;
-        onCreated(data?.project?.id ?? null);
+        const id = data?.project?.id;
+        onCreated(id ? { id, name: data?.project?.name ?? trimmed } : null);
         onClose();
+        return;
+      }
+
+      const errData = (await res.json().catch(() => null)) as {
+        error?: string;
+      } | null;
+      if (res.status === 409 || errData?.error === "NAME_TAKEN") {
+        setError(t("errorProjectNameTaken"));
         return;
       }
       setError(t("errorProjectCreate"));

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { toast } from "react-toastify";
 import NewProjectModal from "@/components/dashboard/NewProjectModal";
 import { selectProjectAction } from "@/lib/projects-actions";
 import type { ProjectListItem } from "@/lib/projects";
@@ -93,12 +94,16 @@ export default function ProjectsMenu({
     router.refresh();
   }
 
-  const newProjectModal = modalOpen && (
+  const overlays = modalOpen && (
     <NewProjectModal
       onClose={() => setModalOpen(false)}
-      onCreated={(id) => {
-        if (id) void selectProject(id);
-        else router.refresh();
+      onCreated={(project) => {
+        if (project) {
+          toast(t("projectCreatedToast", { name: project.name }));
+          void selectProject(project.id);
+        } else {
+          router.refresh();
+        }
       }}
     />
   );
@@ -122,7 +127,7 @@ export default function ProjectsMenu({
           <PlusIcon className="size-4" />
           {t("newProject")}
         </button>
-        {newProjectModal}
+        {overlays}
       </div>
     );
   }
@@ -197,7 +202,7 @@ export default function ProjectsMenu({
         </div>
       )}
 
-      {newProjectModal}
+      {overlays}
     </div>
   );
 }

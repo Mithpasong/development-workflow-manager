@@ -63,7 +63,9 @@
     "errorProjectNameRequired": "Please enter a project name.",
     "errorProjectCreate": "Failed to create the project. Please try again.",
     "collapseSidebar": "Collapse sidebar",
-    "expandSidebar": "Expand sidebar"
+    "expandSidebar": "Expand sidebar",
+    "errorProjectNameTaken": "That project name is already taken.",
+    "projectCreatedToast": "Project {name} has been created"
   },
   "Language": {
     "label": "Language",

@@ -63,7 +63,9 @@
     "errorProjectNameRequired": "프로젝트 명을 입력해 주세요.",
     "errorProjectCreate": "프로젝트 생성에 실패했습니다. 다시 시도해 주세요.",
     "collapseSidebar": "메뉴 접기",
-    "expandSidebar": "메뉴 펼치기"
+    "expandSidebar": "메뉴 펼치기",
+    "errorProjectNameTaken": "이미 사용중인 프로젝트 명입니다.",
+    "projectCreatedToast": "{name} 프로젝트가 생성되었습니다"
   },
   "Language": {
     "label": "언어",
