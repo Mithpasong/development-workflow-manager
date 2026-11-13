@@ -9,6 +9,7 @@ import Logo from "@/components/Logo";
 import DashboardSidebar from "@/components/dashboard/DashboardSidebar";
 import SidebarNav from "@/components/dashboard/SidebarNav";
 import ProjectsMenu from "@/components/dashboard/ProjectsMenu";
+import ProjectNav from "@/components/dashboard/ProjectNav";
 
 export default async function DashboardLayout({
   children,
@@ -61,13 +62,16 @@ export default async function DashboardLayout({
           */}
           <hr className="-mx-2 my-2 border-black/10 dark:border-white/10" />
 
-          {/* 접힘 상태에서는 좁은 폭에 표현할 수 없어 프로젝트 섹션만 숨긴다 */}
+          {/* 접힘 상태에서는 좁은 폭에 표현할 수 없어 드롭다운만 숨긴다 */}
           <div className="group-data-[collapsed=true]/sidebar:hidden">
             <ProjectsMenu
               projects={projects}
               selectedId={selected?.id ?? null}
             />
           </div>
+
+          {/* 프로젝트 메뉴 (접힘 시에는 아이콘만) */}
+          <ProjectNav />
         </DashboardSidebar>
 
         <section className="flex-1 overflow-auto p-6">{children}</section>

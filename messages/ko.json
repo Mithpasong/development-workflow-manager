@@ -66,7 +66,10 @@
     "expandSidebar": "메뉴 펼치기",
     "errorProjectNameTaken": "이미 사용중인 프로젝트 명입니다.",
     "projectCreatedToast": "{name} 프로젝트가 생성되었습니다",
-    "generalLabel": "일반"
+    "generalLabel": "일반",
+    "menuOverview": "개요",
+    "menuSettings": "설정",
+    "menuCollaborators": "협업자"
   },
   "Language": {
     "label": "언어",
