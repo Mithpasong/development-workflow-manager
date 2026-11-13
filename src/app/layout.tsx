@@ -13,8 +13,9 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "로그인",
-  description: "로그인 화면",
+  title: "Development Workflow Manager",
+  description:
+    "Manage all your development work and flow in one place — easy to see and track at a glance.",
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
